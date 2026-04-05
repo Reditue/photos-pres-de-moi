@@ -397,32 +397,41 @@ export default function Home() {
             </div>
             <form onSubmit={authMode === 'login' ? handleLogin : handleSignUp}>
               {authMode === 'signup' && (
+                <div className="mb-3">
+                  <label className="block text-sm font-semibold mb-1 text-gray-700">Pseudo</label>
+                  <input
+                    type="text"
+                    placeholder="Votre pseudo"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                    required
+                  />
+                </div>
+              )}
+              <div className="mb-3">
+                <label className="block text-sm font-semibold mb-1 text-gray-700">Email</label>
                 <input
-                  type="text"
-                  placeholder="Pseudo"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="w-full p-3 border-2 rounded-lg mb-3"
+                  type="email"
+                  placeholder="votre.email@exemple.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
                   required
                 />
-              )}
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-3 border-2 rounded-lg mb-3"
-                required
-              />
-              <input
-                type="password"
-                placeholder="Mot de passe"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-3 border-2 rounded-lg mb-4"
-                required
-                minLength={6}
-              />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-semibold mb-1 text-gray-700">Mot de passe</label>
+                <input
+                  type="password"
+                  placeholder="Minimum 6 caractères"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+                  required
+                  minLength={6}
+                />
+              </div>
               <button type="submit" className="w-full bg-blue-500 text-white py-3 rounded-lg font-bold hover:bg-blue-600">
                 {authMode === 'login' ? 'Se connecter' : 'S\'inscrire'}
               </button>
